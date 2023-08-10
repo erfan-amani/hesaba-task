@@ -1,0 +1,49 @@
+body {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+@font-face {
+  font-family: "yekan";
+  src: local("Trickster"), url("./assets/fonts/Yekan.ttf") format("opentype");
+}
+
+* {
+  font-family: "yekan" !important;
+  direction: rtl;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100vw;
+  height: 70px;
+  background: #0091ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  width: 100vw;
+  height: 110px;
+  background: #eceff1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  width: 100vw;
+  flex: 1;
+  overflow: auto;
+  padding: 10px;
+}
+
+ul li {
+  height: 40px;
+}
