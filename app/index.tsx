@@ -2,6 +2,8 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import Main from "./main";
 import "./style.css";
+import "./index.css";
+
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Cannot find root element!");
 
