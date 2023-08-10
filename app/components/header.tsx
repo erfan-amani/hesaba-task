@@ -1,22 +1,18 @@
 import React from "react";
 import ShoppingCartIcon from "@heroicons/react/24/outline/ShoppingCartIcon";
 import MagnifyingGlassIcon from "@heroicons/react/24/outline/MagnifyingGlassIcon";
+import SearchInput from "./Search";
 
 export default function Header() {
   return (
     <div className="flex items-center justify-between w-full py-4 px-4 shadow-md">
-      <div>
-        <h1 className="text-lg font-bold">حسابا</h1>
-      </div>
+      <div className="flex items-center gap-8">
+        <div>
+          <h1 className="text-lg font-bold">حسابا</h1>
+        </div>
 
-      <div className="">
-        <div className="flex items-center gap-4 w-72 2lg:w-[652px] py-2 px-3 bg-gray-100 rounded-md">
-          <MagnifyingGlassIcon className="w-6 h-6 text-gray-400" />
-
-          <input
-            className="bg-transparent flex-1 placeholder:text-xs"
-            placeholder="محصول مورد نظرتان را جستجو کنید"
-          />
+        <div className="">
+          <SearchInput />
         </div>
       </div>
 

@@ -3,7 +3,15 @@ import { Product } from "../types/Product";
 
 const data = productJson as Product[];
 
-export const getAllProducts = () => {
+export const getAllProducts = (searchTerm?: string | null) => {
+  if (searchTerm) {
+    const filteredData = data.filter((p) =>
+      p.name.toLocaleLowerCase().includes(searchTerm)
+    );
+
+    return filteredData;
+  }
+
   return data;
 };
 
