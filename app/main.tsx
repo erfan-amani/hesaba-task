@@ -3,18 +3,41 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import AppRoutes from "./routes";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Shop from "./routes/shop";
+import Product from "./routes/product";
+import Help from "./routes/help";
+import Layout from "./components/Layout";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Shop />,
+      },
+      {
+        path: "/products",
+        element: <Shop />,
+      },
+      {
+        path: "/products/:id",
+        element: <Product />,
+      },
+      {
+        path: "help",
+        element: <Help />,
+      },
+    ],
+  },
+]);
 
 const Main = () => {
   return (
     <Provider store={store}>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="container mx-auto py-4 flex-1 overflow-auto">
-          <AppRoutes />
-        </main>
-        <Footer />
-      </div>
+      <RouterProvider router={router} />
     </Provider>
   );
 };
