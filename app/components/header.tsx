@@ -4,6 +4,7 @@ import MagnifyingGlassIcon from "@heroicons/react/24/outline/MagnifyingGlassIcon
 import SearchInput from "./Search";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -12,9 +13,9 @@ export default function Header() {
   return (
     <div className="flex items-center justify-between w-full py-4 px-4 shadow-md">
       <div className="flex items-center gap-8">
-        <div>
+        <Link to="/">
           <h1 className="text-lg font-bold">حسابا</h1>
-        </div>
+        </Link>
 
         <div className="">
           <SearchInput />
