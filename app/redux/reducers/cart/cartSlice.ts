@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CartType } from "../../../types/Cart";
 import { Product } from "../../../types/Product";
+import { getPriceNumber } from "../../../utils/helpers";
 
 export interface CartInitialState {
   items: CartType[];
@@ -17,7 +18,7 @@ const cartSlice = createSlice({
       const product = action.payload;
 
       const index = state.items.findIndex((i) => i.product.id === product.id);
-      const oneItemPrice = +product.price.split("$")[1];
+      const oneItemPrice = getPriceNumber(product.price);
 
       if (index === -1) {
         const newItem: CartType = {
@@ -45,7 +46,7 @@ const cartSlice = createSlice({
         } else {
           state.items[index].count--;
           state.items[index].total =
-            state.items[index].total - +item.product.price.split("$")[1];
+            state.items[index].total - getPriceNumber(item.product.price);
         }
       }
     },
