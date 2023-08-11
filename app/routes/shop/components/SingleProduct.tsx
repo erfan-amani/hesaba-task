@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Image from "../../../components/Image";
 import { Product } from "../../../types/Product";
 
 const SingleProduct = ({ data }: { data: Product }) => {
@@ -7,7 +8,11 @@ const SingleProduct = ({ data }: { data: Product }) => {
     <Link to={`/products/${data.id}`}>
       <div className="h-full p-4 border shadow rounded-md flex flex-col gap-4 text-left">
         <div className="w-[90%] mx-auto ">
-          <img src={data.image} className="object-contain rounded-sm" />
+          <Image
+            src={data.image}
+            imageClassName="object-contain rounded-sm"
+            loaderClassName="h-[160px]"
+          />
         </div>
 
         <div className="flex flex-col">
