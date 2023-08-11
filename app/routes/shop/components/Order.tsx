@@ -2,22 +2,26 @@ import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { getPriceNumber } from "../../../utils/helpers";
 import Square3Stack3DIcon from "@heroicons/react/24/outline/Square3Stack3DIcon";
+import { Product } from "../../../types/Product";
 
 export const ORDER_OPTIONS = [
   {
     name: "بیشترین قیمت",
     id: "price-desc",
-    sort: (p1: string, p2: string) => getPriceNumber(p2) - getPriceNumber(p1),
+    sort: (p1: Product, p2: Product) =>
+      getPriceNumber(p2.price) - getPriceNumber(p1.price),
   },
   {
     name: "کمترین قیمت",
     id: "price-asc",
-    sort: (p1: string, p2: string) => getPriceNumber(p1) - getPriceNumber(p2),
+    sort: (p1: Product, p2: Product) =>
+      getPriceNumber(p1.price) - getPriceNumber(p2.price),
   },
   {
     name: "نام کالا",
     id: "name",
-    sort: (p1: string, p2: string) => getPriceNumber(p1) - getPriceNumber(p2),
+    sort: (p1: Product, p2: Product) =>
+      p1.name > p2.name ? 1 : p2.name > p1.name ? -1 : 0,
   },
 ];
 

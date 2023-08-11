@@ -20,12 +20,9 @@ export const getAllProducts = (
     const orderFunction = ORDER_OPTIONS.find(
       (oi) => oi.id === selcetedOrder
     )?.sort;
-    console.log({ orderFunction });
 
     if (orderFunction) {
-      filteredData = filteredData.sort((a, b) =>
-        orderFunction(a.price, b.price)
-      );
+      filteredData = filteredData.sort((a, b) => orderFunction(a, b));
     }
   }
 
