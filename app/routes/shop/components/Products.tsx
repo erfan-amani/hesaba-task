@@ -8,12 +8,15 @@ const Products = () => {
   const [data, setData] = useState<Product[]>([]);
   const [searchParams] = useSearchParams();
   const searchTerm = searchParams.get("search");
+  const selcetedOrder = searchParams.get("order") || "";
 
   useEffect(() => {
-    const data = getAllProducts(searchTerm);
+    const data = getAllProducts(searchTerm, selcetedOrder);
+
+    console.log({ data });
 
     setData(data);
-  }, [searchTerm]);
+  }, [searchTerm, selcetedOrder]);
 
   return (
     <div className="grid grid-cols-4 gap-4 ">

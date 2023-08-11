@@ -1,18 +1,35 @@
 import productJson from "../assets/json/products.json";
+import { ORDER_OPTIONS } from "../routes/shop/components/Order";
 import { Product } from "../types/Product";
 
 const data = productJson as Product[];
 
-export const getAllProducts = (searchTerm?: string | null) => {
+export const getAllProducts = (
+  searchTerm?: string | null,
+  selcetedOrder?: string
+) => {
+  let filteredData = data;
+
   if (searchTerm) {
-    const filteredData = data.filter((p) =>
+    filteredData = data.filter((p) =>
       p.name.toLocaleLowerCase().includes(searchTerm)
     );
-
-    return filteredData;
   }
 
-  return data;
+  if (selcetedOrder) {
+    const orderFunction = ORDER_OPTIONS.find(
+      (oi) => oi.id === selcetedOrder
+    )?.sort;
+    console.log({ orderFunction });
+
+    if (orderFunction) {
+      filteredData = filteredData.sort((a, b) =>
+        orderFunction(a.price, b.price)
+      );
+    }
+  }
+
+  return filteredData;
 };
 
 export const getOneProducts = (id: string) => {
