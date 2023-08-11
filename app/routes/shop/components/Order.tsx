@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { getPriceNumber } from "../../../utils/helpers";
+import Square3Stack3DIcon from "@heroicons/react/24/outline/Square3Stack3DIcon";
 
 export const ORDER_OPTIONS = [
   {
@@ -25,8 +26,12 @@ const Order = () => {
   const selcetedOrder = searchParams.get("order");
 
   return (
-    <div className="p-4 bg-sky-50">
-      <div className="flex items-center gap-4">
+    <div className="flex items-center gap-8 p-4 bg-sky-50 rounded-xl">
+      <div className="flex items-center gap-2">
+        <Square3Stack3DIcon className="w-5 h-5" />
+        <p className="text-sm">ترتیب: </p>
+      </div>
+      <div className="flex items-center gap-6">
         {ORDER_OPTIONS.map(({ name, id }) => (
           <Link
             key={id}
