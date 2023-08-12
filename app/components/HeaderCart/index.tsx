@@ -23,7 +23,7 @@ const HeaderCart = () => {
         <button className="relative border px-2 h-full rounded-md py-2">
           <ShoppingCartIcon className="w-5 h-5" />
 
-          {cartDetail.count && (
+          {!!cartDetail.count && (
             <span className="absolute bottom-[1px] right-[1px] flex items-center justify-center w-4 h-4 rounded-full bg-red-500 text-white text-xs">
               {cartDetail.count}
             </span>
@@ -51,18 +51,20 @@ const HeaderCart = () => {
 
             <List items={cartItems} />
 
-            <div className="p-4 pt-2">
-              <Link
-                to={user?.email ? "/cart" : "/login"}
-                className="flex items-center justify-center w-full py-2 rounded-md text-center bg-green-500 text-white text-lg"
-              >
-                <p className="px-5 !font-mono">${cartDetail.total}</p>
-                <span className="h-[16px] w-[1.5px] bg-white" />
-                <p className="px-5">
-                  {user?.email ? "ثبت سفارش" : "ورود و ثبت سفارش"}
-                </p>
-              </Link>
-            </div>
+            {!!cartDetail.count && (
+              <div className="p-4 pt-2">
+                <Link
+                  to={user?.email ? "/cart" : "/login"}
+                  className="flex items-center justify-center w-full py-2 rounded-md text-center bg-green-500 text-white text-lg"
+                >
+                  <p className="px-5 !font-mono">${cartDetail.total}</p>
+                  <span className="h-[16px] w-[1.5px] bg-white" />
+                  <p className="px-5">
+                    {user?.email ? "ثبت سفارش" : "ورود و ثبت سفارش"}
+                  </p>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

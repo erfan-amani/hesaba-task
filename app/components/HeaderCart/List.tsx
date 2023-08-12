@@ -16,6 +16,14 @@ const List = ({ items }: { items: CartType[] }) => {
   const removeFromCart = async (product: Product) =>
     product?.id && dispatch(removeItem(product?.id));
 
+  if (!items.length) {
+    return (
+      <div className="flex items-center justify-center h-[100px]">
+        <h2 className="text-xl text-gray-600">سبد خرید خالی است</h2>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-4 text-left h-[300px] overflow-auto p-4">
       {items.map(({ product, count, total }) => (
