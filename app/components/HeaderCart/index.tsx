@@ -7,6 +7,7 @@ import { RootState } from "../../redux/store";
 import List from "./List";
 
 const HeaderCart = () => {
+  const user = useSelector((state: RootState) => state.auth.user);
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const cartDetail = cartItems.reduce(
     (prev, cur) => ({
@@ -40,7 +41,9 @@ const HeaderCart = () => {
                 </div>
 
                 <div className="flex gap-2 text-blue-700 font-bold">
-                  <Link to="/cart">مشاهده سبد خرید</Link>
+                  <Link to={user?.email ? "/cart" : "/login"}>
+                    مشاهده سبد خرید
+                  </Link>
                   <ChevronLeftIcon className="w-4 h-4" />
                 </div>
               </div>
@@ -50,12 +53,14 @@ const HeaderCart = () => {
 
             <div className="p-4 pt-2">
               <Link
-                to="/cart"
+                to={user?.email ? "/cart" : "/login"}
                 className="flex items-center justify-center w-full py-2 rounded-md text-center bg-green-500 text-white text-lg"
               >
                 <p className="px-5 !font-mono">${cartDetail.total}</p>
                 <span className="h-[16px] w-[1.5px] bg-white" />
-                <p className="px-5">ثبت سفارش</p>
+                <p className="px-5">
+                  {user?.email ? "ثبت سفارش" : "ورود و ثبت سفارش"}
+                </p>
               </Link>
             </div>
           </div>
