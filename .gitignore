@@ -1,3 +1,5 @@
 node_modules
 .env
 technolife 1015.pdf
+dist
+.DS_Store
