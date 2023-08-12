@@ -17,11 +17,14 @@ export default function Header() {
       </div>
 
       <div className="flex gap-4">
-        <div className="flex items-center border border-gray-600 rounded-lg">
-          <button className="px-5 py-2">ورود</button>
+        <Link
+          to="/login"
+          className="flex items-center border border-gray-600 rounded-lg"
+        >
+          <span className="px-5 py-2">ورود</span>
           <div className="h-[70%] w-[1px] bg-gray-600" />
           <button className="px-5 py-2">ثبت نام</button>
-        </div>
+        </Link>
 
         <HeaderCart />
       </div>

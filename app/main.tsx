@@ -1,13 +1,12 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import Header from "./components/header";
-import Footer from "./components/footer";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Shop from "./routes/shop";
 import Product from "./routes/product";
 import Help from "./routes/help";
 import Layout from "./components/Layout";
+import Login from "./routes/auth";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +31,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "login", element: <Login /> },
 ]);
 
 const Main = () => {
