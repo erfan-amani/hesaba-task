@@ -6,7 +6,11 @@ import { useDispatch } from "react-redux";
 import { CartType } from "../../../types/Cart";
 import { AppDispatch } from "../../../redux/store";
 import { Product } from "../../../types/Product";
-import { addItem, removeItem } from "../../../redux/reducers/cart/cartSlice";
+import {
+  addItem,
+  clearCart,
+  removeItem,
+} from "../../../redux/reducers/cart/cartSlice";
 import Image from "../../../components/Image";
 
 const List = ({
@@ -18,10 +22,18 @@ const List = ({
 }) => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const addToCart = async (product: Product) =>
-    product && dispatch(addItem(product));
-  const removeFromCart = async (product: Product) =>
+  const addToCart = (product: Product) => product && dispatch(addItem(product));
+  const removeFromCart = (product: Product) =>
     product?.id && dispatch(removeItem(product?.id));
+  const removeAll = () => dispatch(clearCart());
+
+  if (!items.length) {
+    return (
+      <div className="flex items-center justify-center h-[100px]">
+        <h2 className="text-xl text-gray-600">سبد خرید خالی است</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col">
@@ -32,7 +44,10 @@ const List = ({
             <p className="text-gray-400">{cartDetail.count} عدد کالا</p>
           </div>
 
-          <button className="flex items-center gap-2 text-sm text-gray-400">
+          <button
+            onClick={removeAll}
+            className="flex items-center gap-2 text-sm text-gray-400"
+          >
             <span>حذف سبد خرید</span>
             <TrashIcon className="w-4 h-4" />
           </button>
