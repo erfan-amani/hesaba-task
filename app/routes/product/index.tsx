@@ -16,7 +16,7 @@ const Product = () => {
   const product = useMemo(() => getOneProducts(id), [id]);
 
   return (
-    <div>
+    <div className="container mx-auto">
       <div className="flex flex-row-reverse gap-4 text-left">
         <div>
           <img src={product?.image} />

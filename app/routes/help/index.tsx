@@ -2,7 +2,7 @@ import React from "react";
 
 const Help = () => {
   return (
-    <div>
+    <div className="container mx-auto">
       <h2>با سلام</h2>
       <h4>
         تسک فنی در نظرگرفته شده یکسری نیازمندی ها دارد که برخی لازم هست که در
