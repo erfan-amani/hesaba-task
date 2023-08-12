@@ -19,7 +19,7 @@ const HeaderCart = () => {
   return (
     <div className="group relative">
       <div className="h-full">
-        <button className="relative border px-2 h-full rounded-md">
+        <button className="relative border px-2 h-full rounded-md py-2">
           <ShoppingCartIcon className="w-5 h-5" />
 
           {cartDetail.count && (

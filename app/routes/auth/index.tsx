@@ -1,15 +1,30 @@
-import React, { FormEvent, useRef } from "react";
+import React, { FormEvent, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import authImage from "../../assets/images/auth-image.png";
+import { login } from "../../redux/reducers/auth/authSlice";
+import { AppDispatch, RootState } from "../../redux/store";
 
 const Login = () => {
+  const user = useSelector((state: RootState) => state.auth.user);
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
   const emailInputRef = useRef<HTMLInputElement>(null);
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
 
     const email = emailInputRef.current?.value;
-    console.log(email);
+
+    if (email) dispatch(login({ email }));
   };
+
+  useEffect(() => {
+    if (user?.email) {
+      navigate("/");
+    }
+  }, [user?.email]);
 
   return (
     <div className="flex w-100vw min-h-screen">
