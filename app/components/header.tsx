@@ -1,11 +1,12 @@
 import React from "react";
-import SearchInput from "./Search";
+import Search from "./Search";
 import { Link } from "react-router-dom";
 import HeaderCart from "./HeaderCart";
 import ArrowLeftOnRectangleIcon from "@heroicons/react/24/outline/ArrowLeftOnRectangleIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { logout } from "../redux/reducers/auth/authSlice";
+import MobileSearch from "./Search/MobileSearch";
 
 export default function Header() {
   const user = useSelector((state: RootState) => state.auth.user);
@@ -23,7 +24,7 @@ export default function Header() {
         </Link>
 
         <div className="">
-          <SearchInput />
+          <Search />
         </div>
       </div>
 

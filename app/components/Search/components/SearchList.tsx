@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Product } from "../../types/Product";
-import { getAllProducts } from "../../utils/data";
+import { Product } from "../../../types/Product";
+import { getAllProducts } from "../../../utils/data";
 
 const List = ({ searchTerm }: { searchTerm: string }) => {
   const [searchResult, setSearchResult] = useState<Product[]>([]);
