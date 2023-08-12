@@ -1,6 +1,6 @@
 # hesaba-task
 
-Simple shopping app
+A shopping app with many products that come from a json file. You can see products, search between products, sort items and add each product in your cart. After selecting products you can check your shopping cart in a seperate page and also modified the cart too. Project is on React library with typescipt. For styling I used tailwindCSS and redux for state management. Also project configured with webpack.
 
 ### App contains below features
 
