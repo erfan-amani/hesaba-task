@@ -1,6 +1,6 @@
 import React, { FormEvent, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authImage from "../../assets/images/auth-image.png";
 import { login } from "../../redux/reducers/auth/authSlice";
 import { AppDispatch, RootState } from "../../redux/store";
@@ -27,14 +27,17 @@ const Login = () => {
   }, [user?.email]);
 
   return (
-    <div className="flex w-100vw min-h-screen">
+    <div className="flex flex-col md:flex-row w-100vw min-h-screen">
       <div className="flex items-center flex-1 px-10 py-4">
         <form
           onSubmit={onSubmit}
           className="flex flex-col items-center justify-between min-h-[400px] w-full"
         >
           <div className="text-center">
-            <h1 className="text-3xl mb-4">ورود / ثبت نام</h1>
+            <Link to="/" className="">
+              حسابا
+            </Link>
+            <h2 className="text-2xl mb-4">ورود / ثبت نام</h2>
             <p className="font-bold">خوش اومدی!</p>
           </div>
 
@@ -58,7 +61,7 @@ const Login = () => {
         </form>
       </div>
 
-      <div className="w-[65%]">
+      <div className="w-[65%] invisible hidden md:visible md:block">
         <img src={authImage} className="w-full h-full object-cover" />
       </div>
     </div>
