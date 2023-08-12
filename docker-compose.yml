@@ -1,0 +1,13 @@
+version: "3.5"
+
+services:
+  front:
+    container_name: front
+    volumes:
+      - /app/node_modules
+    command: npm run serve
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
