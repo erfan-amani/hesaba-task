@@ -17,12 +17,12 @@ const Product = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="flex flex-row-reverse gap-4 text-left">
+      <div className="flex flex-col md:flex-row-reverse gap-4 text-left">
         <div>
           <img src={product?.image} />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2">
           <div className="flex flex-col [&>*]:!font-mono flex-1">
             <h2 className="text-lg font-bold">{product?.name}</h2>
             <p>{product?.price}</p>
